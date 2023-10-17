@@ -2,7 +2,6 @@ package com.somensi.orgs.ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import com.somensi.orgs.R
@@ -20,7 +19,7 @@ class FormProductActivity : AppCompatActivity(R.layout.activity_form_product) {
     }
 
     private fun setupButton() {
-        val button = findViewById<Button>(R.id.button_save)
+        val button = findViewById<Button>(R.id.activity_form_product_button_save)
         button.setOnClickListener {
             val product = createProduct()
             productDAO.add(product)
@@ -29,9 +28,9 @@ class FormProductActivity : AppCompatActivity(R.layout.activity_form_product) {
     }
 
     private fun createProduct() : Product {
-        val name = getTextFromEditText(R.id.name)
-        val description = getTextFromEditText(R.id.description)
-        val value = getTextFromEditText(R.id.value)
+        val name = getTextFromEditText(R.id.activity_form_product_name)
+        val description = getTextFromEditText(R.id.product_item_description)
+        val value = getTextFromEditText(R.id.activity_form_product_value)
 
         val price = if (value.isBlank()) {
             BigDecimal.ZERO

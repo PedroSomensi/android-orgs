@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.somensi.orgs.R
-import com.somensi.orgs.dao.ProductDao
 import com.somensi.orgs.model.Product
 
 class ProductListAdapter(
@@ -20,13 +19,13 @@ class ProductListAdapter(
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         fun build(product: Product) {
-            val title = itemView.findViewById<TextView>(R.id.title)
+            val title = itemView.findViewById<TextView>(R.id.product_item_title)
             title.text = product.title
 
-            val description = itemView.findViewById<TextView>(R.id.description)
+            val description = itemView.findViewById<TextView>(R.id.product_item_description)
             description.text = product.description
 
-            val price = itemView.findViewById<TextView>(R.id.price)
+            val price = itemView.findViewById<TextView>(R.id.product_item_price)
             price.text = product.price.toEngineeringString()
         }
 

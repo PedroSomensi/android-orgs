@@ -27,7 +27,7 @@ class ProductListActivity: AppCompatActivity() {
     }
 
     private fun setupRecyclerView() {
-        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+        val recyclerView = findViewById<RecyclerView>(R.id.products_list_recyclerView)
         recyclerView.adapter = adapter
     }
 
@@ -37,7 +37,7 @@ class ProductListActivity: AppCompatActivity() {
     }
 
     private fun setupFloatingButton() {
-        val floatingButton = findViewById<FloatingActionButton>(R.id.floatingActionButton)
+        val floatingButton = findViewById<FloatingActionButton>(R.id.products_list_floatingActionButton)
         floatingButton.setOnClickListener {
             goToFormProduct()
         }
