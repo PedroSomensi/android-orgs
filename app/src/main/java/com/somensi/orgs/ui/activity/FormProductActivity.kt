@@ -6,6 +6,7 @@ import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import com.somensi.orgs.R
+import com.somensi.orgs.dao.ProductDao
 import com.somensi.orgs.model.Product
 import java.math.BigDecimal
 
@@ -33,7 +34,10 @@ class FormProductActivity : AppCompatActivity(R.layout.activity_form_product) {
                 price = price
             )
 
-            Log.i("FormProduct", "onCreate: $product")
+            val productsDao = ProductDao()
+            productsDao.add(product)
+
+            Log.i("FormProduct", "onCreate: ${productsDao.all()}")
         }
 
     }
