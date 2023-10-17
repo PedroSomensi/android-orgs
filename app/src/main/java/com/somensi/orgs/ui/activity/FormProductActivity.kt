@@ -36,7 +36,7 @@ class FormProductActivity : AppCompatActivity(R.layout.activity_form_product) {
 
             val productsDao = ProductDao()
             productsDao.add(product)
-
+            finish()
             Log.i("FormProduct", "onCreate: ${productsDao.all()}")
         }
 
