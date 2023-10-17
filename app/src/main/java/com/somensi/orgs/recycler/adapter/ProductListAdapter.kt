@@ -7,12 +7,15 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.somensi.orgs.R
+import com.somensi.orgs.dao.ProductDao
 import com.somensi.orgs.model.Product
 
 class ProductListAdapter(
-    private val products: List<Product>,
+    products: List<Product>,
     private val context: Context
 ) : RecyclerView.Adapter<ProductListAdapter.ViewHolder>() {
+
+    private val products = products.toMutableList()
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
@@ -40,6 +43,12 @@ class ProductListAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val product = products[position]
         holder.build(product)
+    }
+
+    fun update(products: List<Product>) {
+        this.products.clear()
+        this.products.addAll(products)
+        notifyDataSetChanged()
     }
 
 }
