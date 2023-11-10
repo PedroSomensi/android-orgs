@@ -7,18 +7,24 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.somensi.orgs.R
 import com.somensi.orgs.dao.ProductDao
+import com.somensi.orgs.databinding.ActivityProductsListBinding
 import com.somensi.orgs.recycler.adapter.ProductListAdapter
 
-class ProductListActivity: AppCompatActivity() {
+class ProductListActivity: AppCompatActivity(R.layout.activity_products_list) {
     private val productsDao = ProductDao()
     private val adapter = ProductListAdapter(context = this, products = productsDao.all())
 
+    private val binding by lazy {
+        ActivityProductsListBinding.inflate(layoutInflater)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_products_list)
 
         setupRecyclerView()
         setupFloatingButton()
+
+        setContentView(binding.root)
     }
 
     override fun onResume() {
@@ -27,7 +33,7 @@ class ProductListActivity: AppCompatActivity() {
     }
 
     private fun setupRecyclerView() {
-        val recyclerView = findViewById<RecyclerView>(R.id.products_list_recyclerView)
+        val recyclerView = binding.productsListRecyclerView
         recyclerView.adapter = adapter
     }
 
@@ -37,7 +43,7 @@ class ProductListActivity: AppCompatActivity() {
     }
 
     private fun setupFloatingButton() {
-        val floatingButton = findViewById<FloatingActionButton>(R.id.products_list_floatingActionButton)
+        val floatingButton = binding.productsListFloatingActionButton
         floatingButton.setOnClickListener {
             goToFormProduct()
         }

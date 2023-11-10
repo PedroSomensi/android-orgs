@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.somensi.orgs.R
+import com.somensi.orgs.databinding.ProductItemBinding
 import com.somensi.orgs.model.Product
 
 class ProductListAdapter(
@@ -16,16 +17,15 @@ class ProductListAdapter(
 
     private val products = products.toMutableList()
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    class ViewHolder(binding: ProductItemBinding) : RecyclerView.ViewHolder(binding.root) {
+
+        private val title = binding.productItemTitle
+        private val description = binding.productItemDescription
+        private val price = binding.productItemPrice
 
         fun build(product: Product) {
-            val title = itemView.findViewById<TextView>(R.id.product_item_title)
             title.text = product.title
-
-            val description = itemView.findViewById<TextView>(R.id.product_item_description)
             description.text = product.description
-
-            val price = itemView.findViewById<TextView>(R.id.product_item_price)
             price.text = product.price.toEngineeringString()
         }
 
@@ -35,8 +35,8 @@ class ProductListAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(context)
-        val view = inflater.inflate(R.layout.product_item, parent, false)
-        return ViewHolder(view)
+        val binding = ProductItemBinding.inflate(inflater, parent, false)
+        return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

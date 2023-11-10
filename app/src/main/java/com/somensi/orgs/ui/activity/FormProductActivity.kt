@@ -4,22 +4,34 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import androidx.compose.animation.core.withInfiniteAnimationFrameNanos
 import com.somensi.orgs.R
 import com.somensi.orgs.dao.ProductDao
+import com.somensi.orgs.databinding.ActivityFormProductBinding
+import com.somensi.orgs.databinding.ActivityProductsListBinding
 import com.somensi.orgs.model.Product
 import java.math.BigDecimal
+
+import com.somensi.orgs.utils.getText
 
 class FormProductActivity : AppCompatActivity(R.layout.activity_form_product) {
 
     private val productDAO = ProductDao()
 
+    private val binding by lazy {
+        ActivityFormProductBinding.inflate(layoutInflater)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setupButton()
+
+        setContentView(binding.root)
     }
 
     private fun setupButton() {
-        val button = findViewById<Button>(R.id.activity_form_product_button_save)
+        val button = binding.activityFormProductButtonSave
         button.setOnClickListener {
             val product = createProduct()
             productDAO.add(product)
@@ -28,9 +40,9 @@ class FormProductActivity : AppCompatActivity(R.layout.activity_form_product) {
     }
 
     private fun createProduct() : Product {
-        val name = getTextFromEditText(R.id.activity_form_product_name)
-        val description = getTextFromEditText(R.id.product_item_description)
-        val value = getTextFromEditText(R.id.activity_form_product_value)
+        val name = binding.activityFormProductName.getText
+        val description = binding.productItemDescription.getText
+        val value = binding.activityFormProductValue.getText
 
         val price = if (value.isBlank()) {
             BigDecimal.ZERO
@@ -46,10 +58,5 @@ class FormProductActivity : AppCompatActivity(R.layout.activity_form_product) {
 
     }
 
-    private fun getTextFromEditText(id: Int) : String {
-        val editText = findViewById<EditText>(id)
-        val text = editText.text.toString()
-        return text
-    }
-
 }
+
