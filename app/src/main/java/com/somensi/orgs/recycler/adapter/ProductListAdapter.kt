@@ -9,6 +9,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.somensi.orgs.R
 import com.somensi.orgs.databinding.ProductItemBinding
 import com.somensi.orgs.model.Product
+import java.math.BigDecimal
+import java.text.NumberFormat
+import java.util.Locale
 
 class ProductListAdapter(
     products: List<Product>,
@@ -27,6 +30,12 @@ class ProductListAdapter(
             title.text = product.title
             description.text = product.description
             price.text = product.price.toEngineeringString()
+            price.text = formatPrice(product.price)
+        }
+
+        private fun formatPrice(value: BigDecimal): String {
+            val formatter: NumberFormat = NumberFormat.getCurrencyInstance(Locale("pt", "br"))
+            return formatter.format(value)
         }
 
     }
