@@ -29,7 +29,7 @@
         app:layout_constraintStart_toEndOf="@id/imageView"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="@tools:sample/lorem/random"
-        app:layout_constraintHorizontal_weight="7"/>
+        app:layout_constraintWidth_percent="0.7"/>
 
     <TextView
         android:id="@+id/product_item_description"
@@ -78,7 +78,7 @@
         app:layout_constraintEnd_toStartOf="@id/product_item_title"
         app:srcCompat="@drawable/produto_1"
         android:scaleType="centerCrop"
-        app:layout_constraintHorizontal_weight="3"/>
+        app:layout_constraintWidth_percent="0.3"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
