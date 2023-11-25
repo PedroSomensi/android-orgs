@@ -42,12 +42,12 @@ class FormProductActivity : AppCompatActivity(R.layout.activity_form_product) {
     private fun createProduct() : Product {
         val name = binding.activityFormProductName.getText
         val description = binding.productItemDescription.getText
-        val value = binding.activityFormProductValue.getText
+        val value = binding.activityFormProductTextinputlayoutPrice.editText!!.getText
 
         val price = if (value.isBlank()) {
             BigDecimal.ZERO
         } else {
-            BigDecimal(value)
+            BigDecimal(value!!)
         }
 
         return Product(
