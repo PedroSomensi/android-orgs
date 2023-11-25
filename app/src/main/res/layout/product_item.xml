@@ -10,19 +10,28 @@
         android:id="@+id/product_item_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        tools:text="Salada de fruta"
         android:layout_margin="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
+        android:ellipsize="end"
+        android:fontFamily="@font/montserrat_bold"
+        android:maxLines="1"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/imageView"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@tools:sample/lorem/random" />
 
     <TextView
         android:id="@+id/product_item_description"
         android:layout_width="0dp"
+        android:textSize="14sp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:fontFamily="@font/montserrat"
         android:layout_height="wrap_content"
-        tools:text="Uva e maçã"
+        tools:text="@tools:sample/lorem/random"
         app:layout_constraintEnd_toEndOf="@id/product_item_title"
         app:layout_constraintStart_toStartOf="@id/product_item_title"
         app:layout_constraintTop_toBottomOf="@id/product_item_title" />
@@ -30,8 +39,15 @@
     <TextView
         android:id="@+id/product_item_price"
         android:layout_width="0dp"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/montserrat"
         android:layout_height="wrap_content"
         tools:text="19.99"
+        android:layout_marginTop="8dp"
+        android:textColor="@android:color/holo_green_dark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="16dp"
         app:layout_constraintEnd_toEndOf="@id/product_item_title"
         app:layout_constraintStart_toStartOf="@id/product_item_title"
         app:layout_constraintTop_toBottomOf="@id/product_item_description"/>
@@ -39,7 +55,7 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
