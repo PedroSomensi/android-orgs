@@ -34,3 +34,6 @@ google-services.json
 
 # Mac os
 .DS_Store
+
+# custom
+ProductDao.kt
