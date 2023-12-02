@@ -12,6 +12,8 @@ import com.somensi.orgs.databinding.ActivityProductsListBinding
 import com.somensi.orgs.model.Product
 import java.math.BigDecimal
 import android.app.AlertDialog
+import coil.load
+import com.somensi.orgs.databinding.FormImageBinding
 
 import com.somensi.orgs.utils.getText
 
@@ -32,10 +34,18 @@ class FormProductActivity : AppCompatActivity(R.layout.activity_form_product) {
 
         binding.activityFormProductImageview.setOnClickListener {
 
-            AlertDialog.Builder(this)
-                .setView(R.layout.form_image)
-                .setPositiveButton("Confirmar") { _, _ ->
+            val bindingFormImage = FormImageBinding.inflate(layoutInflater)
 
+            bindingFormImage.formImageButtonLoad.setOnClickListener {
+                val url = bindingFormImage.formImageUrl.getText
+                bindingFormImage.formImageImageview.load(url)
+            }
+
+            AlertDialog.Builder(this)
+                .setView(bindingFormImage.root)
+                .setPositiveButton("Confirmar") { _, _ ->
+                    val url = bindingFormImage.formImageUrl.getText
+                    binding.activityFormProductImageview.load(url)
                 }
                 .setNegativeButton("Cancelar") { _, _ ->
 

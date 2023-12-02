@@ -1,6 +1,7 @@
 package com.somensi.orgs.dao
 
 import com.somensi.orgs.model.Product
+import java.math.BigDecimal
 
 class ProductDao {
 
@@ -13,7 +14,13 @@ class ProductDao {
     }
 
     companion object {
-        private val products = mutableListOf<Product>()
+        private val products = mutableListOf<Product>(
+            Product(
+                title = "Salada de frutas",
+                description = "Laranja, maçãs e uva",
+                price = BigDecimal("12.83")
+            )
+        )
     }
 
 }
