@@ -22,7 +22,7 @@
             />
 
         <Button
-            android:id="@+id/form_image_button_carregar"
+            android:id="@+id/form_image_button_load"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Carregar"
@@ -40,7 +40,7 @@
             android:layout_margin="16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/form_image_button_carregar"
+            app:layout_constraintTop_toBottomOf="@id/form_image_button_load"
             app:layout_constraintBottom_toBottomOf="parent"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
