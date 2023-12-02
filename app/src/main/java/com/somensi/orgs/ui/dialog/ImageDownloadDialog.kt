@@ -7,7 +7,7 @@ import com.somensi.orgs.databinding.FormImageBinding
 import com.somensi.orgs.utils.downloadImage
 import com.somensi.orgs.utils.getText
 
-class ProductDialog(private val context: Context) {
+class ImageDownloadDialog(private val context: Context) {
 
     fun show(whenImageLoaded: (String?) -> Unit) {
         val binding = FormImageBinding.inflate(LayoutInflater.from(context))

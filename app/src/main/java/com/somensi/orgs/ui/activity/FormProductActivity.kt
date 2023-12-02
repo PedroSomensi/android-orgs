@@ -6,7 +6,7 @@ import com.somensi.orgs.R
 import com.somensi.orgs.dao.ProductDao
 import com.somensi.orgs.databinding.ActivityFormProductBinding
 import com.somensi.orgs.model.Product
-import com.somensi.orgs.ui.dialog.ProductDialog
+import com.somensi.orgs.ui.dialog.ImageDownloadDialog
 import com.somensi.orgs.utils.downloadImage
 import com.somensi.orgs.utils.getText
 import java.math.BigDecimal
@@ -29,7 +29,7 @@ class FormProductActivity : AppCompatActivity(R.layout.activity_form_product) {
         setContentView(binding.root)
 
         binding.activityFormProductImageview.setOnClickListener {
-            ProductDialog(this).show() { url ->
+            ImageDownloadDialog(this).show() { url ->
                 urlImage = url
                 binding.activityFormProductImageview.downloadImage(urlImage)
             }
