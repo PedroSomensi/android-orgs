@@ -1,12 +1,10 @@
 package com.somensi.orgs.recycler.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.somensi.orgs.R
 import com.somensi.orgs.databinding.ProductItemBinding
 import com.somensi.orgs.model.Product
 import java.math.BigDecimal
@@ -31,6 +29,7 @@ class ProductListAdapter(
             description.text = product.description
             price.text = product.price.toEngineeringString()
             price.text = formatPrice(product.price)
+
         }
 
         private fun formatPrice(value: BigDecimal): String {
@@ -53,6 +52,7 @@ class ProductListAdapter(
         holder.build(product)
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun update(products: List<Product>) {
         this.products.clear()
         this.products.addAll(products)
