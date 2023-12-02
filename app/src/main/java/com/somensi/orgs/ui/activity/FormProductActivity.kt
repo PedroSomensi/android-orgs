@@ -1,25 +1,21 @@
 package com.somensi.orgs.ui.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import androidx.compose.animation.core.withInfiniteAnimationFrameNanos
+import androidx.appcompat.app.AppCompatActivity
 import com.somensi.orgs.R
 import com.somensi.orgs.dao.ProductDao
 import com.somensi.orgs.databinding.ActivityFormProductBinding
-import com.somensi.orgs.databinding.ActivityProductsListBinding
 import com.somensi.orgs.model.Product
-import java.math.BigDecimal
-import android.app.AlertDialog
-import coil.load
-import com.somensi.orgs.databinding.FormImageBinding
-
+import com.somensi.orgs.ui.dialog.ProductDialog
+import com.somensi.orgs.utils.downloadImage
 import com.somensi.orgs.utils.getText
+import java.math.BigDecimal
 
 class FormProductActivity : AppCompatActivity(R.layout.activity_form_product) {
 
     private val productDAO = ProductDao()
+
+    private var urlImage: String? = null
 
     private val binding by lazy {
         ActivityFormProductBinding.inflate(layoutInflater)
@@ -33,26 +29,12 @@ class FormProductActivity : AppCompatActivity(R.layout.activity_form_product) {
         setContentView(binding.root)
 
         binding.activityFormProductImageview.setOnClickListener {
-
-            val bindingFormImage = FormImageBinding.inflate(layoutInflater)
-
-            bindingFormImage.formImageButtonLoad.setOnClickListener {
-                val url = bindingFormImage.formImageUrl.getText
-                bindingFormImage.formImageImageview.load(url)
+            ProductDialog(this).show() { url ->
+                urlImage = url
+                binding.activityFormProductImageview.downloadImage(urlImage)
             }
-
-            AlertDialog.Builder(this)
-                .setView(bindingFormImage.root)
-                .setPositiveButton("Confirmar") { _, _ ->
-                    val url = bindingFormImage.formImageUrl.getText
-                    binding.activityFormProductImageview.load(url)
-                }
-                .setNegativeButton("Cancelar") { _, _ ->
-
-                }
-                .show()
-            
         }
+
     }
 
     private fun setupButton() {
@@ -78,7 +60,8 @@ class FormProductActivity : AppCompatActivity(R.layout.activity_form_product) {
         return Product(
             title = name,
             description = description,
-            price = price
+            price = price,
+            image = urlImage
         )
 
     }
