@@ -48,7 +48,8 @@
                 android:id="@+id/form_image_url"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="URL da imagem" />
+                android:hint="URL da imagem"
+                android:inputType="textUri" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
