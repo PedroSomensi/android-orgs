@@ -15,7 +15,7 @@
             android:layout_width="0dp"
             android:layout_height="200dp"
             android:id="@+id/activity_form_product_imageview"
-            app:srcCompat="@drawable/produto_1"
+            app:srcCompat="@drawable/imagem_padrao"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
