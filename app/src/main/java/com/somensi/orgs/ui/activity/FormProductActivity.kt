@@ -47,7 +47,7 @@ class FormProductActivity : AppCompatActivity(R.layout.activity_form_product) {
         val price = if (value.isBlank()) {
             BigDecimal.ZERO
         } else {
-            BigDecimal(value!!)
+            BigDecimal(value)
         }
 
         return Product(

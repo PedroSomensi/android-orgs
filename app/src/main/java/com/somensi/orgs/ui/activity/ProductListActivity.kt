@@ -1,5 +1,6 @@
 package com.somensi.orgs.ui.activity
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -20,11 +21,23 @@ class ProductListActivity: AppCompatActivity(R.layout.activity_products_list) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(binding.root)
 
         setupRecyclerView()
         setupFloatingButton()
 
-        setContentView(binding.root)
+        AlertDialog.Builder(this)
+            .setMessage("mensagem de teste")
+            .setTitle("Titule de teste")
+            .setView(R.layout.form_image)
+            .setPositiveButton("Confirmar") { _, _ ->
+
+            }
+            .setNegativeButton("Cancelar") { _, _ ->
+
+            }
+            .show()
+
     }
 
     override fun onResume() {
