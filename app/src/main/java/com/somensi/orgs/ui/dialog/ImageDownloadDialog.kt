@@ -9,8 +9,13 @@ import com.somensi.orgs.utils.getText
 
 class ImageDownloadDialog(private val context: Context) {
 
-    fun show(whenImageLoaded: (String?) -> Unit) {
+    fun show(urlDefault: String? = null, whenImageLoaded: (String?) -> Unit) {
         val binding = FormImageBinding.inflate(LayoutInflater.from(context))
+
+        urlDefault?.let {
+            binding.formImageImageview.downloadImage(it)
+            binding.formImageUrl.setText(it)
+        }
 
         binding.formImageButtonLoad.setOnClickListener {
             val url = binding.formImageUrl.getText

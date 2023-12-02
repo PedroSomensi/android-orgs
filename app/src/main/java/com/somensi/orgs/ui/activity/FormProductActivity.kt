@@ -29,7 +29,7 @@ class FormProductActivity : AppCompatActivity(R.layout.activity_form_product) {
         setContentView(binding.root)
 
         binding.activityFormProductImageview.setOnClickListener {
-            ImageDownloadDialog(this).show() { url ->
+            ImageDownloadDialog(this).show(urlImage) { url ->
                 urlImage = url
                 binding.activityFormProductImageview.downloadImage(urlImage)
             }
