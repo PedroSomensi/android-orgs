@@ -2,12 +2,12 @@ package com.somensi.orgs.ui.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.somensi.orgs.R
 import com.somensi.orgs.dao.ProductDao
 import com.somensi.orgs.databinding.ActivityProductsListBinding
+import com.somensi.orgs.model.Product
 import com.somensi.orgs.recycler.adapter.ProductListAdapter
 
 class ProductListActivity: AppCompatActivity(R.layout.activity_products_list) {
@@ -34,6 +34,12 @@ class ProductListActivity: AppCompatActivity(R.layout.activity_products_list) {
     private fun setupRecyclerView() {
         val recyclerView = binding.productsListRecyclerView
         recyclerView.adapter = adapter
+
+        adapter.clickOnItem = object : ProductListAdapter.ClickOnItemListener {
+            override fun clicked(product: Product) {
+                Log.i("ListaProdutosAdapter", "clicando no item: ${product.title}")
+            }
+        }
     }
 
     private fun goToFormProduct() {
