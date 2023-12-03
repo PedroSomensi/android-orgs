@@ -8,9 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.somensi.orgs.databinding.ProductItemBinding
 import com.somensi.orgs.model.Product
 import com.somensi.orgs.utils.downloadImage
-import java.math.BigDecimal
-import java.text.NumberFormat
-import java.util.Locale
+import com.somensi.orgs.utils.formatToString
 
 class ProductListAdapter(
     products: List<Product>,
@@ -46,17 +44,12 @@ class ProductListAdapter(
             this.product = product
             title.text = product.title
             description.text = product.description
-            price.text = formatPrice(product.price)
+            price.text = product.price.formatToString()
             downloadImage(product.image)
         }
 
         private fun downloadImage(url: String?) {
             binding.imageView.downloadImage(url)
-        }
-
-        private fun formatPrice(value: BigDecimal): String {
-            val formatter: NumberFormat = NumberFormat.getCurrencyInstance(Locale("pt", "br"))
-            return formatter.format(value)
         }
 
     }

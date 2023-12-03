@@ -1,10 +1,13 @@
 package com.somensi.orgs.model
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 import java.math.BigDecimal
 
-data class Product (
+@Parcelize
+data class Product(
     val title: String,
     val description: String,
     val price: BigDecimal,
     val image: String? = null
-)
+): Parcelable

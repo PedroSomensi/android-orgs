@@ -2,7 +2,6 @@ package com.somensi.orgs.ui.activity
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.somensi.orgs.R
 import com.somensi.orgs.dao.ProductDao
@@ -37,13 +36,20 @@ class ProductListActivity: AppCompatActivity(R.layout.activity_products_list) {
 
         adapter.clickOnItem = object : ProductListAdapter.ClickOnItemListener {
             override fun clicked(product: Product) {
-                Log.i("ListaProdutosAdapter", "clicando no item: ${product.title}")
+                goToDetailOf(product)
             }
         }
     }
 
     private fun goToFormProduct() {
         val intent = Intent(this, FormProductActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun goToDetailOf(product: Product) {
+        val intent = Intent(this, ProductDetailActivity::class.java).apply {
+            putExtra("product", product)
+        }
         startActivity(intent)
     }
 
