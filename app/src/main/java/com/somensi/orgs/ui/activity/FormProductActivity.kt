@@ -23,7 +23,7 @@ class FormProductActivity : AppCompatActivity(R.layout.activity_form_product) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        title = "Cadastrar produto"
         setupButton()
 
         setContentView(binding.root)
